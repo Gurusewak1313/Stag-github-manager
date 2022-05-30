@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GitHub import test</title>
+</head>
+<body>
+    <h1>GitHub importer</h1>
+    <label>Search repo by repo URL</label>
+    <div>
+        <input id="repoURL" type="text">
+        <button id="btnRepos">Search Repos</button>
+    </div>
+    <label>Search repo by repo name</label>
+    <div>
+        <input id="repoName" type="text">
+        <button id="btnName">Search Repos</button>
+    </div>
+    
+    <div id="divResult">
+        
+    </div>
+    
+    <script>
+        
+        // Run specific functions when corresponding buttons are clicked
+        const btnRepos = document.getElementById("btnRepos")
+        const btnName = document.getElementById("btnName")
+        const divResult = document.getElementById("divResult")
+        
+        btnRepos.addEventListener("click", getRepos)
+        btnName.addEventListener("click", getNames)
+        
+        // Gets a public repository given an inputted repository's GitHub url
+        async function getRepos(){
+            clear();        // Clear the output space
+            const repoURLEntry = String(document.getElementById("repoURL").value)
+            var splitURL = repoURLEntry.split("/")
+            fullNamePart2 = splitURL.pop()
+            fullNamePart1 = splitURL.pop()
+            fullName = fullNamePart1 + "/" + fullNamePart2
+            var url = "https://api.github.com/search/repositories?q=repo:"
+            url += fullName
+            
+            // Get the data based on given parameters
+            const response = await fetch(url)
+            const result = await response.json()
+            
+            // Print the data to the result space
+            result.items.forEach(i=>{
+                const anchor = document.createElement("a")
+                anchor.href = i.html_url;           // Hyperlink to corresponding page
+                anchor.textContent = i.full_name;
+                divResult.appendChild(anchor)
+                divResult.appendChild(document.createElement("br"))
+            })
+        }
+        
+        // Gets all public repositories with the inputted name in either the repo's name or description
+        async function getNames(){
+            clear();        // Clear the output space
+            
+            const repoName = String(document.getElementById("repoName").value)
+            var url = "https://api.github.com/search/repositories?q="+repoName+"&sort=stars&order=desc"     // Sort results with the most stars appearing first
+            
+            // Get the data based on the given parameters
+            const response = await fetch(url)
+            const result = await response.json()
+            
+            // Print the repo image, name, description to the result space
+            result.items.forEach(i=>{
+                const img = document.createElement("img")
+                img.src = i.owner.avatar_url        // Repo owner's avatar image
+                img.style.width = "32px"
+                img.style.height = "32px"
+                
+                // Repo name
+                const nameResult = document.createElement("a")
+                nameResult.href = i.html_url        // Hyperlink to corresponding page
+                nameResult.textContent = i.name
+                
+                // Repo description
+                const descResult = document.createElement("a")
+                descResult.textContent = i.description
+                
+                divResult.appendChild(img)
+                divResult.appendChild(nameResult)
+                divResult.appendChild(document.createElement("br"))
+                divResult.appendChild(descResult)
+                divResult.appendChild(document.createElement("br"))
+            })
+        }
+        
+        // Clears the text field
+        function clear(){
+            while(divResult.firstChild) divResult.removeChild(divResult.firstChild)
+        }
+        
+    </script>
+</body>
+</html>

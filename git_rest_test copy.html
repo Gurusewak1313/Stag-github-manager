@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GitHub import test</title>
+</head>
+<body>
+    <h1>GitHub importer</h1>
+    <label>Search repo by repo URL</label>
+    <div>
+        <input id="repoURL" type="text">
+        <button id="btnRepos">Search Repos</button>
+    </div>
+
+    <div id="divResult">
+        
+    </div>
+    
+    <script>
+        
+        // Run specific functions when corresponding buttons are clicked
+        const btnRepos = document.getElementById("btnRepos")
+        const divResult = document.getElementById("divResult")
+        
+        btnRepos.addEventListener("click", getRepos)
+        
+        // Gets all public repositories with more than a given number of stars
+        async function getRepos(){
+            clear();        // Clear the output space
+            const repoURLEntry = String(document.getElementById("repoURL").value)
+            var splitURL = repoURLEntry.split("/")
+            fullNamePart2 = splitURL.pop()
+            fullNamePart1 = splitURL.pop()
+            fullName = fullNamePart1 + "/" + fullNamePart2
+            var url = "https://api.github.com/search/repositories?q=repo:"
+            url += fullName
+            
+            // Get the data based on given parameters
+            const response = await fetch(url)
+            const result = await response.json()
+            
+            // Print the data to the result space
+            result.items.forEach(i=>{
+                const anchor = document.createElement("a")
+                anchor.href = i.html_url;           // Hyperlink to corresponding page
+                anchor.textContent = i.full_name;
+                divResult.appendChild(anchor)
+                divResult.appendChild(document.createElement("br"))
+            })
+        }
+        
+        // Clears the text field
+        function clear(){
+            while(divResult.firstChild) divResult.removeChild(divResult.firstChild)
+        }
+        
+    </script>
+</body>
+</html>
