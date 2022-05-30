@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="assets/css/searchBarStyle.css" rel="stylesheet">
+  <meta charset="UTF-8">
+</head>
+
+<body style="background: rgb(20,20,20)">
+
+  <div class="wrap" style="background: rgb(20, 20, 20)">
+
+    <div class="wrap_wrap">
+      <!-- Stag Icon -->
+      <img src="assets/img/stagLogo_inverted.png" class="homeLogo">
+
+
+      <!-- Search Bar (form) -->
+      <!-- JavaScript to send data to next page -->
+      <script>
+        function checkInput() {
+          // Get data from user input form
+          var userSearchInput = document.getElementById("searchForm");
+          var searchQuery = searchForm[0].value;
+          var searchType = searchForm[2].value;
+          // save data to local storage
+          localStorage.setItem("searchQuery", searchQuery);
+          localStorage.setItem("searchType", searchType);
+          // redirect to search if input not blank
+          if (localStorage.getItem("searchQuery") != "") window.location = "search.html";
+        }
+      </script>
+
+      <!-- Form -->
+      <div>
+        <form id="searchForm" style="margin-top: 5%" action="search.html"
+          onsubmit="event.preventDefault(); checkInput();">
+          <input type="text" name="searchQuery" class="searchTerm" placeholder="Search Repository" autocomplete="off">
+          <button type="submit" class="searchButton">Search</button>
+          <div class="dropdownMenu">
+            <div style="margin-top: 0.5%">
+              Search Type:
+              <div>
+                <select name="searchType">
+                  <option value="name"> Name </option>
+                  <option value="url"> URL </option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </form>
+        <a href="about.html">
+          <button class="searchButton" style="width: 30%; float: right">About</button>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+
+</html>

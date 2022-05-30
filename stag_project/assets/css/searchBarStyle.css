@@ -1,0 +1,87 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+body{
+  background: rgb(255, 255, 255);
+  font-family: 'Open Sans', sans-serif;
+}
+
+.search {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.homeLogo{
+  width: 60%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 2px solid #000000;
+  padding: 5px;
+  height: em;
+  border-radius: 5px;
+  outline: none;
+  color: #000000;
+  font-size: 14pt;
+  font: sans-serif;
+  float: left;
+}
+
+.searchTerm:focus{
+  color: #000000;
+}
+
+.searchButton {
+  margin-top: 20px;
+  width: 60%;
+  height: 35px;
+  border: 1px solid #000000;
+  background: #555555;
+  text-align: center;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  float:right;
+}
+
+.dropdownMenu {
+  margin-top: 15px;
+  width: 30%;
+  height: 15%;
+  border: 1px solid #000000;
+  background: #555555;
+  text-align: center;
+  color: #FFFFFF;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  float: left;
+  align-content: center;
+  vertical-align: middle;
+}
+
+.wrap{
+  width: 60%;
+  height: 95%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgb(20, 20, 20);
+  z-index: 900;
+}
+
+.wrap_wrap{
+  width: 80%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 950;
+}

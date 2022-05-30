@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="assets/css/loadingStyle.css" rel="stylesheet">
+    <meta charset="UTF-8">
+</head>
+
+<!-- Scripts -->
+<script src="assets/js/extractData.js" type="text/javascript"></script>
+<script>
+async function openDashboard(full_name) { // Actually opens loading page first, then open dashboard
+    var full_name = localStorage.getItem("repoFullName");
+    await get_commits(full_name);
+    await get_issues(full_name);
+    window.location = "dashboard.html";
+}
+</script>
+
+<body style="background:silver" onload="openDashboard()">
+
+    <form action="search.html">
+        <button type="submit" class="backButton"> Back to Search</button>
+    </form>
+    <div class="loadingWrapper">
+        <!-- Loading gif -->
+        <img src="assets/img/importLoading.gif" class="deerGif">
+        <a class="loadingText">Loading repo data...</a>
+    </div>
+
+</body>
+
+
+</html>

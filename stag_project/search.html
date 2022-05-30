@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="assets/css/searchResultStyle.css" rel="stylesheet">
+    <meta charset="UTF-8">
+</head>
+
+<!-- Scripts -->
+<script src="assets/js/extractData.js"></script>
+<script src="assets/js/searchScript.js"></script>
+
+<body style="background: rgb(165, 165, 165)" onload="generateDisplay();">
+
+    <!-- Header -->
+    <div class="header" style="height: 72pt; width: 100%; background: silver;">
+        <!--Logo on left side -->
+        <img style="width: 60pt; height: 60pt; margin-top: 5pt; margin-left: 6pt; float: left;"
+            src="assets/img/stagLogo_noText.png">
+        <!-- mini search bar -->
+        <div style="height: 36pt; width: 450pt; margin-left: 10pt; margin-top: 14pt; float:left;">
+            <form id="searchForm" action="search.html" onsubmit="event.preventDefault(); checkInput();">
+                <input type="text" id="searchQuery" class="searchTerm" autocomplete="off">
+                <button type="submit" class="searchButton">
+                    <i class="fa fa-search"></i>
+                </button>
+                Search Type:
+                <select name="searchType">
+                    <option value="name"> Name </option>
+                    <option value="url"> URL </option>
+                </select>
+            </form>
+        </div>
+    </div>
+
+    <!-- Template -->
+    <div id="resultContent" style="margin-left: 5%">
+    </div>
+</body>
+
+
+</html>

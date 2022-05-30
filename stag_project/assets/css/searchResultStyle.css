@@ -1,0 +1,75 @@
+.itemBlock {
+    border: 3pt grey solid;
+    background: rgba(245, 245, 245, 0.678);
+    width: 500pt;
+    height: 70pt;
+    border-radius: 5pt;
+    margin-left: 8pt;
+    margin-right: auto;
+    margin-top: 5pt;
+    word-wrap: break-word;
+}
+
+.thumbnailAndButton {
+    float: left;
+    display: block;
+    height: 70pt;
+    width: 80pt;
+    background: grey;
+    word-wrap: break-word;
+}
+
+.openButton {
+    background: lightseagreen;
+    height: 20pt;
+    width: 60pt;
+    font-size: 14pt;
+    margin-bottom: 10pt;
+    text-align: center;
+    border-radius: 5pt;
+    margin-left: auto;
+    margin-right: auto;
+    word-wrap: break-word;
+    cursor: pointer;
+}
+
+.repoTitle {
+    font-size: 16pt;
+    font-weight: bold;
+    margin-left: 85pt;
+    word-wrap: break-word;
+}
+
+.repoDesc {
+    font-size: 12pt;
+    margin-left: 85pt;
+    word-wrap: break-word;
+}
+
+.searchTerm {
+  width: 400pt;
+  border: 2pt solid #000000;
+  padding: 2pt;
+  height: 18pt;
+  border-radius: 5px 0 0 5px;
+  border-right: none;
+  outline: none;
+  color: #000000;
+  font-size: 14pt;
+  font: sans-serif;
+  float: left;
+  margin-top: 6pt;
+}
+
+.searchButton {
+  width: 26pt;
+  height: 26pt;
+  margin-top: 6pt;
+  border: 0pt solid #000000;
+  background: #000000;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
